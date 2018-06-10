@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!--此属性控制是否启用延迟加载功能，是全局配置，默认值为false，要想在项目中启用延迟加载功能，需要将这个属性设置为true。-->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!--此属性控制触发延迟加载属性的方式，是全局配置，默认值为true，表示只要有一个延迟加载的属性被使用，所有延迟加载的属性都会加载；false表示按需要加载。-->
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<!--MyBaits对Object的部分方法做了特殊处理，默认情况下当调用到equals,clone,hashCode,toString这4个方法时会触发延迟加载；可以通过在setting中增加此条内容来禁用这个特性。-->
+		<setting name="lazyLoadTriggerMethods" value="clone"/>
+	</settings>
+</configuration>

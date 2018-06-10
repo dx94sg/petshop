@@ -1,0 +1,12 @@
+package com.adu;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class PetshopWebsiteApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PetshopWebsiteApplication.class, args);
+	}
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adu.mgr.mapper.userMapper" >
+  <resultMap id="BaseResultMap" type="com.adu.mgr.domain.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="BIGINT" />
+    <result column="admin" property="admin" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.adu.mgr.domain.User" useGeneratedKeys="true" keyProperty="id" >
+    insert into user (username, password, email, 
+      tel, admin)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{tel,jdbcType=BIGINT}, #{admin,jdbcType=INTEGER})
+  </insert>
+  <insert id="register" parameterType="com.adu.mgr.domain.User" useGeneratedKeys="true" keyProperty="id" >
+    insert into user (username, password, email,
+    tel, admin)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+    #{tel,jdbcType=BIGINT}, #{admin,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.adu.mgr.domain.User" >
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=BIGINT},
+      admin = #{admin,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, username, password, email, tel, admin
+    from user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, username, password, email, tel, admin
+    from user
+  </select>
+  <select id="check" resultMap="BaseResultMap" >
+    select id, username, password
+    from user WHERE username = #{username} and password = #{password}
+  </select>
+</mapper>
